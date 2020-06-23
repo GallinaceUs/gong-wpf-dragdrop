@@ -270,15 +270,23 @@
                             <TextBlock Style="{StaticResource DefaultTextBlockStyle}" Text="Demonstrates the behaviour with a ListBox which is bound to a grouped collection (CollectionViewSource). The ListBox uses also a custom DropHandler to handle the drop action." />
                             <ListBox x:Name="GroupedListBox"
                                      dd:DragDrop.DragDirectlySelectedOnly="True"
-                                     dd:DragDrop.DropHandler="{Binding Data.GroupedDropHandler}"
                                      dd:DragDrop.IsDragSource="True"
                                      dd:DragDrop.IsDropTarget="True"
                                      DisplayMemberPath="Caption"
                                      ItemsSource="{Binding Source={StaticResource GroupedCollectionViewSource}}"
-                                     SelectionMode="Extended">
+                                     SelectionMode="Extended"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                     dd:DragDrop.ItemsPanelOrientation="Horizontal"
+                                     MaxWidth="400"
+                                     HorizontalAlignment="Left">
                                 <ListBox.GroupStyle>
                                     <x:Static Member="GroupStyle.Default" />
                                 </ListBox.GroupStyle>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
                             </ListBox>
 
                             <TextBlock Style="{StaticResource DefaultTextBlockStyle}" Text="Customization" />
